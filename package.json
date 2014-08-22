@@ -16,6 +16,7 @@
 	"bin": "src/jasmine-bin.js",
 	"dependencies":
 	{
-		"jasmine-core": "~2.0.0"
+		"jasmine-core": "~2.0.0",
+        "jasmine-reporters": "~2.0.3"
 	}
 }

@@ -14,6 +14,7 @@ global.jasmine = jasmine;
 
 var
 	showColors = true,
+	jUnit = false,
 	args = process.argv.slice(2);
 
 args.forEach(function(arg)
@@ -24,6 +25,9 @@ args.forEach(function(arg)
 			break;
 		case '--noColor':
 			showColors = false;
+			break;
+		case '--junit':
+			jUnit = true;
 			break;
 		default:
 			modules.push(arg);
@@ -43,7 +47,14 @@ var
 		showColors: showColors,
 		print: util.print,
 		timer: new jasmine.Timer()
-	});
+	}),
+    junitReporter = new jasmineReporters.JUnitXmlReporter({
+        savePath: '.',
+        consolidateAll: false
+    });
 
 jasmineEnv.addReporter(consoleReporter);
+if (jUnit) {
+    jasmineEnv.addReporter(junitReporter);
+}
 jasmineEnv.execute();
