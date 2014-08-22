@@ -1,5 +1,7 @@
 #! /usr/bin/env node
 
+var jasmineReporters = require('jasmine-reporters');
+
 var
 	path = require('path'),
 	util = require('util'),
